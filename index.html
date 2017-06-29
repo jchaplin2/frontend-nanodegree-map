@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Worldly Travels</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" > </script>
+<script src="./js/app.js" defer ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" defer  ></script>
+<link rel="stylesheet" type="text/css" href="./css/main.css" > </link>
+</head>
+<body>
+
+	<main>
+		<input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" />
+		<button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
+
+		<div> 
+			<ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
+				<li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
+			</ul>
+		</div>
+        <div id="map" ></div>
+	</main>
+
+	 <!--	 	  
+     <select id="map-style" data-bind="event : {change : styleHandler }">
+		<option value="default"> Default </option>
+		<option value="neon" > Neon </option>
+		<option value="atlas"> Atlas </option>
+	 </select>
+
+     <select id="places" data-bind="event : {change : placesHandler }">
+		<option value="travel" > Places I've Travelled </option>
+		<option value="work"> Places I've Worked </option>
+	 </select>	 
+	-->	 
+	 
+
+</body>
+</html>

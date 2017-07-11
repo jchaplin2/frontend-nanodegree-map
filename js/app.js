@@ -12,113 +12,176 @@ var MapWithMarkers = function() {
 	var styles = [];
 
 	this.initialize = function(){
-		styles = [{
-			featureType: 'water',
-			stylers: [{
-				color: '#19a0d8'
-			}]
-		  },{
-			featureType: 'administrative',
-			elementType: 'labels.text.stroke',
-			stylers: [
-			  { color: '#ffffff' },
-			  { weight: 6 }
+		styles = {
+	        night: [
+	          {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+	          {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+	          {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+	          {
+	            featureType: 'administrative.locality',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#d59563'}]
+	          },
+	          {
+	            featureType: 'poi',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#d59563'}]
+	          },
+	          {
+	            featureType: 'poi.park',
+	            elementType: 'geometry',
+	            stylers: [{color: '#263c3f'}]
+	          },
+	          {
+	            featureType: 'poi.park',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#6b9a76'}]
+	          },
+	          {
+	            featureType: 'road',
+	            elementType: 'geometry',
+	            stylers: [{color: '#38414e'}]
+	          },
+	          {
+	            featureType: 'road',
+	            elementType: 'geometry.stroke',
+	            stylers: [{color: '#212a37'}]
+	          },
+	          {
+	            featureType: 'road',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#9ca5b3'}]
+	          },
+	          {
+	            featureType: 'road.highway',
+	            elementType: 'geometry',
+	            stylers: [{color: '#746855'}]
+	          },
+	          {
+	            featureType: 'road.highway',
+	            elementType: 'geometry.stroke',
+	            stylers: [{color: '#1f2835'}]
+	          },
+	          {
+	            featureType: 'road.highway',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#f3d19c'}]
+	          },
+	          {
+	            featureType: 'transit',
+	            elementType: 'geometry',
+	            stylers: [{color: '#2f3948'}]
+	          },
+	          {
+	            featureType: 'transit.station',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#d59563'}]
+	          },
+	          {
+	            featureType: 'water',
+	            elementType: 'geometry',
+	            stylers: [{color: '#17263c'}]
+	          },
+	          {
+	            featureType: 'water',
+	            elementType: 'labels.text.fill',
+	            stylers: [{color: '#515c6d'}]
+	          },
+	          {
+	            featureType: 'water',
+	            elementType: 'labels.text.stroke',
+	            stylers: [{color: '#17263c'}]
+	          }
+	        ],
+
+			neon : [{
+				featureType: 'water',
+				stylers: [{
+					color: '#19a0d8'
+				}]
+			  },{
+				featureType: 'administrative',
+				elementType: 'labels.text.stroke',
+				stylers: [
+				  { color: '#ffffff' },
+				  { weight: 6 }
+				]
+			  },{
+				featureType: 'administrative',
+				elementType: 'labels.text.fill',
+				stylers: [
+				  { color: '#e85113' }
+				]
+			  },{
+				featureType: 'road.highway',
+				elementType: 'geometry.stroke',
+				stylers: [
+				  { color: '#efe9e4' },
+				  { lightness: -40 }
+				]
+			  },{
+				featureType: 'transit.station',
+				stylers: [
+				  { weight: 9 },
+				  { hue: '#e85113' }
+				]
+			  },{
+				featureType: 'road.highway',
+				elementType: 'labels.icon',
+				stylers: [
+				  { visibility: 'off' }
+				]
+			  },{
+				featureType: 'water',
+				elementType: 'labels.text.stroke',
+				stylers: [
+				  { lightness: 100 }
+				]
+			  },{
+				featureType: 'water',
+				elementType: 'labels.text.fill',
+				stylers: [
+				  { lightness: -100 }
+				]
+			  },{
+				featureType: 'poi',
+				elementType: 'geometry',
+				stylers: [
+				  { visibility: 'on' },
+				  { color: '#f0e4d3' }
+				]
+			  },{
+				featureType: 'road.highway',
+				elementType: 'geometry.fill',
+				stylers: [
+				  { color: '#efe9e4' },
+				  { lightness: -25 }
+				]
+			  }
 			]
-		  },{
-			featureType: 'administrative',
-			elementType: 'labels.text.fill',
-			stylers: [
-			  { color: '#e85113' }
-			]
-		  },{
-			featureType: 'road.highway',
-			elementType: 'geometry.stroke',
-			stylers: [
-			  { color: '#efe9e4' },
-			  { lightness: -40 }
-			]
-		  },{
-			featureType: 'transit.station',
-			stylers: [
-			  { weight: 9 },
-			  { hue: '#e85113' }
-			]
-		  },{
-			featureType: 'road.highway',
-			elementType: 'labels.icon',
-			stylers: [
-			  { visibility: 'off' }
-			]
-		  },{
-			featureType: 'water',
-			elementType: 'labels.text.stroke',
-			stylers: [
-			  { lightness: 100 }
-			]
-		  },{
-			featureType: 'water',
-			elementType: 'labels.text.fill',
-			stylers: [
-			  { lightness: -100 }
-			]
-		  },{
-			featureType: 'poi',
-			elementType: 'geometry',
-			stylers: [
-			  { visibility: 'on' },
-			  { color: '#f0e4d3' }
-			]
-		  },{
-			featureType: 'road.highway',
-			elementType: 'geometry.fill',
-			stylers: [
-			  { color: '#efe9e4' },
-			  { lightness: -25 }
-			]
-		  }
-		];
-		
+		};		
+
 		map = new google.maps.Map(document.getElementById('map'), {
 		  center: {lat: 40.7413549, lng: -73.9980244},
 		  zoom: 13,
 		  styles : styles,
 		  mapTypeControl: false
 		});
+
+        // Set the map's style to the initial value of the selector.
+        var styleSelector = document.getElementById('style-selector');
+        map.setOptions({styles: styles[styleSelector.value]});
+
+        // Apply new JSON when the user selects a different style.
+        styleSelector.addEventListener('change', function() {
+          map.setOptions({styles: styles[styleSelector.value]});
+        });
 		
 		markerInfoWindow = new MapInfoWindow();
 		initializeLocations();
 	};
 	
 	var initializeLocations = function() {
-	/*
-		self.mapLocations = ko.observableArray([{
-				name: 'Datascope',
-				address: '1300 MacArthur Blvd, Mahwah, NJ 07430',
-				location: {lat: 41.079133, lng: -74.158121},
-				isVisible : ko.observable(true)
-			},{
-				name: 'Citigroup',
-				address: '111 Sylvan Avenue Englewood Cliffs, NJ',
-				location: {lat: 40.869342, lng: -73.957102},
-				isVisible : ko.observable(true)
-			},{
-				name: 'Citigroup',
-				address: '1919 Park Ave Weehawken, NJ 07086',
-				location: {lat: 40.760824, lng: -74.026037},
-				isVisible : ko.observable(true)
-			},{
-				name: 'Hertz',
-				address: '225 Brae Blvd Park Ridge, NJ 07656',
-				location: {lat: 41.039778, lng: -74.062549},
-				isVisible : ko.observable(true)
-			},{
-				name : 'Financial Sciences',
-				address: '111 Town Square Pl, Jersey City, NJ 07310',
-				location: {lat: 40.726304, lng: -74.033740},
-				isVisible : ko.observable(true)
-		}]);
-	*/
-
 		self.mapLocations = ko.observableArray([{
 				name: 'Wrigley Field',
 				address: '1060 W Addison St, Chicago, IL 60613',
@@ -232,22 +295,19 @@ var MapWithMarkers = function() {
 			var marker = createMarker(self.mapLocations()[i], i);			
 			self.mapLocations()[i].marker = marker;
 			bounds.extend(self.mapLocations()[i].marker.position);
+
 		}
 		map.fitBounds(bounds);
 	};
 
-	var getMarkerImageURL = function(location) {
-		var imageURL;
-		var $countryCode = $.ajax({
+	var setFlagImageURL = function(mapLocationObject, location) {
+		$.ajax({
 				type: 'GET',
-				url: 'http://api.geonames.org/countryCode?lat='+location.lat+'&lng='+location.lng+'&username=demo',
-				async : false
-		}).responseText;
-
-		if($countryCode)
-			imageURL = "http://geotree.geonames.org/img/flags18/"+$countryCode+".png";
-
-		return imageURL;
+				url: 'http://api.geonames.org/countryCode?lat='+location.lat+'&lng='+location.lng+'&username=jchaplin',
+				async : true
+		}).done(function(result) {
+			mapLocationObject.imageURL = "http://geotree.geonames.org/img/flags18/"+result.trim()+".png";
+		});
 	};
 	
 	//function to create map marker.
@@ -255,16 +315,17 @@ var MapWithMarkers = function() {
 		var position = mapItem.location;
 		var title = mapItem.name;
 		var address = mapItem.address;
-		var iconURL = getMarkerImageURL(mapItem.location);
+		var imageURL = mapItem.imageURL;
 	
 		var marker = new google.maps.Marker({
 			position: position,
 			title: title,
-			icon : iconURL,
 			address : address,
 			animation: google.maps.Animation.DROP,
 			id: index
 		});
+		
+		setFlagImageURL(marker, position);
 
 		//Opens the infowindow.
 		marker.addListener('click', function() {
@@ -298,6 +359,45 @@ var MapWithMarkers = function() {
 		data.isVisible(true);
 		data.marker.setMap(map);
 	};
+
+	this.toggleDrawerControls = function(){
+		var drawer = window.document.querySelector('#drawer');
+		var openFlag = drawer.dataset.openFlag;
+		if(openFlag === "true") {
+			hideDrawer(drawer);
+		} else {
+			showDrawer(drawer);
+		}
+	};
+		
+	var hideDrawer = function(drawer) {
+		drawer.classList.remove('open');
+		
+		var map = window.document.getElementById("map");
+		map.classList.add('map-show');
+		
+		var drawerControl = window.document.getElementById("hide-drawer-control");
+		drawerControl.classList.add("drawer-controls-hide");
+		
+		var drawerControlImage = window.document.getElementById("hide-drawer-control-image");
+		drawerControlImage.style.transform = "rotate(180deg)";
+		
+		drawer.dataset.openFlag = "false";
+	}
+		
+	var showDrawer = function(drawer) {
+		drawer.classList.add('open');
+		
+		var map = window.document.getElementById("map");
+		map.classList.add('map-hide');
+		
+		var drawerControl = window.document.getElementById("hide-drawer-control");
+		drawerControl.classList.add("drawer-controls");
+		
+		var drawerControlImage = window.document.getElementById("hide-drawer-control-image");
+		drawerControlImage.style.transform = "";
+		drawer.dataset.openFlag = "true";
+	}
 	
 	this.resetEntries = function() {
 		var lastIndex = self.mapLocations().length - 1;
@@ -380,7 +480,7 @@ var MapInfoWindow = function() {
 	  if (status === google.maps.StreetViewStatus.OK) {
 		var nearStreetViewLocation = data.location.latLng;
 		var heading = google.maps.geometry.spherical.computeHeading(nearStreetViewLocation, infoWin.marker.position);
-		infoWin.setContent('<strong>' + infoWin.marker.title + '</strong><div>' + infoWin.marker.address + '</div><div id="pano"></div>');
+		infoWin.setContent('<img src=\"'+infoWin.marker.imageURL+'\" alt="country flag" /> </span><strong>' + infoWin.marker.title + '</strong><div>' + infoWin.marker.address + '</div><div id="pano" class="streetViewContainer"></div>');
 
 		var panoramaOptions = {
 			position: nearStreetViewLocation,

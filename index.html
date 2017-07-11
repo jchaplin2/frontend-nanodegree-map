@@ -10,32 +10,34 @@
 <link rel="stylesheet" type="text/css" href="./css/main.css" > </link>
 </head>
 <body>
-
 	<main>
-		<input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" />
-		<button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
+		<nav class="menu open" data-bind="click: toggleDrawerControls" id="drawer" data-open-flag="true">
 
-		<div> 
-			<ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
-				<li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
-			</ul>
-		</div>
-        <div id="map" ></div>
+			<div id="style-selector-control" name="style-selector-control"  class="map-control">
+			  <label for="style-selector">Map Style</label>
+		      <select id="style-selector" class="selector-control">
+		        <option value="default">Default</option>
+		        <option value="neon">Neon</option>
+		        <option value="night">Night Mode</option>
+		      </select>
+		    </div>
+
+			<input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" />
+			<button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
+
+			<div> 
+				<ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
+					<li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
+				</ul>
+			</div>
+			<div id="hide-drawer-control" class="drawer-controls">
+				<img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" />
+			</div>
+
+
+		</nav>
+		
+        <div id="map" class="map-hide" ></div>
 	</main>
-
-	 <!--	 	  
-     <select id="map-style" data-bind="event : {change : styleHandler }">
-		<option value="default"> Default </option>
-		<option value="neon" > Neon </option>
-		<option value="atlas"> Atlas </option>
-	 </select>
-
-     <select id="places" data-bind="event : {change : placesHandler }">
-		<option value="travel" > Places I've Travelled </option>
-		<option value="work"> Places I've Worked </option>
-	 </select>	 
-	-->	 
-	 
-
 </body>
 </html>

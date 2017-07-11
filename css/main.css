@@ -1,50 +1,99 @@
-      html,body {
-        font-family: Arial, sans-serif;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-		background-color:#213d48;
-		color:white;
-      }
-	  
-	  main  {
-		position:relative;
-		height:100%;
-	  }
-	  
-	  button {
-		background-color:#63767E;
-		color:white;
-	  }
-	  
-	  .placesList {
-		list-style:none;
-		display:inline-block;
-		padding-left: 0;
-		width: 230px;
-		margin-top: 0;
-	  }
-	  
-	  .placesList:last-child {
-		border-bottom: 1px solid #798990;
-	  }
+html,
+body {
+	font-family: Arial, sans-serif;
+	height: 100%;
+	width:100%;
+	margin: 0;
+	padding: 0;
+	background-color:#213d48;
+}
 
-      #map {
-		position:absolute;
-		color : black;
-        bottom:0px;
-        height: 100%;
-        right: 150px;
-		width:750px;
-      }
-	  
-	  .autocomplete-item {
-		border-top: 1px solid #798990;
-		border-left: 1px solid #798990;
-		border-right: 1px solid #798990;
-		font: 10pt arial;
-	  }
-	  
-	  .autocomplete-item:hover {
-		background-color:#63767E;
-	  }	  
+.menu {
+	color:white;
+}
+
+.streetViewContainer {
+	width: 200px;
+	height: 200px;
+}
+
+main  {
+	position:relative;
+	height:100%;
+	width:100%;
+	z-index:1;
+}
+
+button {
+	background-color:#63767E;
+	color:white;
+}
+
+nav {
+	background-color:#213d48;
+	color:white;
+	position:absolute;
+	width:300px;
+	height:100%;
+	transform: translate(-300px, 0);
+	transition: transform 0.3s ease;	
+	z-index: 3;
+}
+
+nav.open {
+	transform: translate(0, 0);
+}
+
+.placesList {
+	list-style:none;
+	display:inline-block;
+	padding-left: 0;
+	width: 230px;
+	margin-top: 0;
+}
+
+.placesList:last-child {
+	border-bottom: 1px solid #798990;
+}
+
+.map-hide {
+	position: absolute;
+	left: 301px;
+	right: 0;
+	height: 100%;
+	bottom: 0;
+	z-index: 1;
+}
+
+.map-show {
+	left: 0;
+}
+
+.map-control {
+	margin-bottom: 10px;	
+}
+
+.drawer-controls {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.drawer-controls-hide {
+	right: -50px;
+}
+.drawer-controls-image {
+	width: 50px;
+	height: 50px;
+}
+
+.autocomplete-item {
+	border-top: 1px solid #798990;
+	border-left: 1px solid #798990;
+	border-right: 1px solid #798990;
+	font: 10pt arial;
+}
+
+.autocomplete-item:hover {
+	background-color:#63767E;
+}

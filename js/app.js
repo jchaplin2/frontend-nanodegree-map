@@ -383,7 +383,7 @@ var MapWithMarkers = function() {
 		drawerControlImage.style.transform = "rotate(180deg)";
 		
 		drawer.dataset.openFlag = "false";
-	}
+	};
 		
 	var showDrawer = function(drawer) {
 		drawer.classList.add('open');
@@ -397,7 +397,7 @@ var MapWithMarkers = function() {
 		var drawerControlImage = window.document.getElementById("hide-drawer-control-image");
 		drawerControlImage.style.transform = "";
 		drawer.dataset.openFlag = "true";
-	}
+	};
 	
 	this.resetEntries = function() {
 		var lastIndex = self.mapLocations().length - 1;

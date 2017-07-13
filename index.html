@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>My Worldly Travels</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" > </script>
-<script src="./js/app.js" defer ></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" defer  ></script>
-<link rel="stylesheet" type="text/css" href="./css/main.css" > </link>
-</head>
-<body>
-	<main>
-		<nav class="menu open" data-bind="click: toggleDrawerControls" id="drawer" data-open-flag="true">
-
-			<div id="style-selector-control" name="style-selector-control"  class="map-control">
-			  <label for="style-selector">Map Style</label>
-		      <select id="style-selector" class="selector-control">
-		        <option value="default">Default</option>
-		        <option value="neon">Neon</option>
-		        <option value="night">Night Mode</option>
-		      </select>
-		    </div>
-
-			<input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" />
-			<button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
-
-			<div> 
-				<ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
-					<li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
-				</ul>
-			</div>
-			<div id="hide-drawer-control" class="drawer-controls">
-				<img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" />
-			</div>
-
-
-		</nav>
-		
-        <div id="map" class="map-hide" ></div>
-	</main>
-</body>
+    <head>
+        <title>My Worldly Travels</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/main.css" >
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" defer onerror="loadError()" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" defer  onerror="loadError()" > </script>
+        <script src="./js/app.js" defer onerror="loadError()" ></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" defer  onerror="loadError()" ></script>
+    </head>
+    <body>
+        <main>
+            <nav class="menu open" id="drawer" data-bind="css : {'open': drawerVisible }" >
+                <div id="style-selector-control" name="style-selector-control"  class="map-control">
+                    <label for="style-selector">Map Style</label>
+                    <select id="style-selector" class="selector-control">
+                        <option value="default">Default</option>
+                        <option value="neon">Neon</option>
+                        <option value="night">Night Mode</option>
+                    </select>
+                </div>
+                <input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" >
+                <button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
+                <div>
+                    <ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
+                        <li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
+                    </ul>
+                </div>
+                <div id="hide-drawer-control" class="drawer-controls" data-bind="click: toggleDrawerControls, css : {'drawer-controls-hide' : !drawerVisible()}">
+                    <img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" data-bind="css : {'rotateControl' : !drawerVisible()}" />
+                </div>
+            </nav>
+            <div id="map" data-bind="css : {'map-hide': drawerVisible }" class="map-show" ></div>
+        </main>
+    </body>
 </html>

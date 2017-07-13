@@ -99,3 +99,7 @@ nav.open {
 .autocomplete-item:hover {
 	background-color:#63767E;
 }
+
+.rotateControl {
+	transform: rotate(180deg);
+}

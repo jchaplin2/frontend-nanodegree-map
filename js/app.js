@@ -239,9 +239,9 @@ var MapWithMarkers = function() {
             async: true
         }).done(function(result) {
         	if(result)
-	            mapLocationObject.imageHTML = "<img src='http://geotree.geonames.org/img/flags18/" + result.trim() + ".png' alt='country flag' />";
+                mapLocationObject.imageHTML = "<img src='http://geotree.geonames.org/img/flags18/" + result.trim() + ".png' alt='country flag' />";
         }).fail(function() {
-	            mapLocationObject.imageHTML = "<span> Unable to load flag image. </span>";
+                mapLocationObject.imageHTML = "<span> Unable to load flag image. </span>";
         });
     };
 
@@ -366,7 +366,7 @@ var MapInfoWindow = function() {
         	marker.setAnimation(google.maps.Animation.BOUNCE);
             window.setTimeout(function(){
 				marker.setAnimation(null);
-            }, 1000);
+            }, 1400);
         }
 
         // Use streetview service to get the closest streetview image within

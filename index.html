@@ -8,10 +8,10 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" defer onerror="loadError()" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" defer  onerror="loadError()" > </script>
         <script src="./js/app.js" defer onerror="loadError()" ></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" defer  onerror="loadError()" ></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" async onerror="loadError()" ></script>
     </head>
     <body>
-        <main>
+        <div>
             <nav class="menu open" id="drawer" data-bind="css : {'open': drawerVisible }" >
                 <div id="style-selector-control" name="style-selector-control"  class="map-control">
                     <label for="style-selector">Map Style</label>
@@ -32,7 +32,7 @@
                     <img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" data-bind="css : {'rotateControl' : !drawerVisible()}" />
                 </div>
             </nav>
-            <div id="map" data-bind="css : {'map-hide': drawerVisible }" class="map-show" ></div>
-        </main>
+            <main id="map" data-bind="css : {'map-hide': drawerVisible }" class="map-show" ></main>
+        </div>
     </body>
 </html>

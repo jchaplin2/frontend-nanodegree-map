@@ -16,10 +16,6 @@ var MapWithMarkers = function() {
 
     this.initialize = function() {
 
-    	$.getJSON( "./js/styles.json", function( data ) {
-    		styles = data;
-		});
-
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
                 lat: 40.7413549,
@@ -29,6 +25,10 @@ var MapWithMarkers = function() {
             styles: styles,
             mapTypeControl: false
         });
+
+    	$.getJSON( "./js/styles.json", function( data ) {
+    		styles = data;
+		});
 
         // Set the map's style to the initial value of the selector.
         var styleSelector = document.getElementById('style-selector');

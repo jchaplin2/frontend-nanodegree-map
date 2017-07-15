@@ -5,10 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./css/main.css" >
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" defer onerror="loadError()" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" defer  onerror="loadError()" > </script>
-        <script src="./js/app.js" defer onerror="loadError()" ></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" async onerror="loadError()" ></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" onerror="loadError()" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" onerror="loadError()" > </script>
+        <script src="./js/app.js" onerror="loadError()" ></script>
     </head>
     <body>
         <div>
@@ -34,5 +33,6 @@
             </nav>
             <main id="map" data-bind="css : {'map-hide': drawerVisible }" class="map-show" ></main>
         </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" async onerror="loadError()" ></script>
     </body>
 </html>

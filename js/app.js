@@ -57,8 +57,8 @@ var MapWithMarkers = function() {
             },
             isVisible: ko.observable(true)
         }, {
-            name: '875 N Michigan Avenue, Chicago, IL 60611',
-            address: 'John Hancock Observatory',
+            name: 'John Hancock Observatory',
+            address: '875 N Michigan Avenue, Chicago, IL 60611',
             location: {
                 lat: 41.898883,
                 lng: -87.623150
@@ -70,6 +70,14 @@ var MapWithMarkers = function() {
             location: {
                 lat: 41.495705,
                 lng: -81.685273
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Comerica Park',
+            address: '2100 Woodward Ave, Detroit, MI 48201',
+            location: {
+                lat: 42.3389,
+                lng: -83.0485
             },
             isVisible: ko.observable(true)
         }, {
@@ -105,11 +113,75 @@ var MapWithMarkers = function() {
             },
             isVisible: ko.observable(true)
         }, {
+            name: 'Yankee Stadium',
+            address: '1 E 161st St, Bronx, NY 10451',
+            location: {
+                lat: 40.8296,
+                lng: -73.9262
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Citizen\'s Bank Park',
+            address: '1 Citizens Bank Way, Philadelphia, PA 19148, USA',
+            location: {
+                lat: 39.906,
+                lng: -75.1666
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Nationals Park',
+            address: '1500 S Capitol St SE, Washington, DC 20003',
+            location: {
+                lat: 38.8729,
+                lng: -77.0075
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Citi Field',
+            address: '123-01 Roosevelt Ave, Queens, NY 11368',
+            location: {
+                lat: 40.757,
+                lng: -73.8458
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Met Life Stadium',
+            address: '1 MetLife Stadium Dr, East Rutherford, NJ 07073',
+            location: {
+                lat: 40.8128,
+                lng: -74.0742
+            },
+            isVisible: ko.observable(true)
+        }, {
             name: 'Tropicana Field',
             address: '1 Tropicana Dr, St. Petersburg, FL 33705',
             location: {
                 lat: 27.768111,
                 lng: -82.653269
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Great American Ballpark',
+            address: '100 Joe Nuxhall Way, Cincinnati, OH 45202',
+            location: {
+                lat: 39.0979,
+                lng: -84.5082
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Miller Park',
+            address: '1 Brewers Way, Milwaukee, WI 53214',
+            location: {
+                lat: 43.0282,
+                lng: -87.9713
+            },
+            isVisible: ko.observable(true)
+        },{
+            name: 'Lambeau Field',
+            address: '1265 Lombardi Ave, Green Bay, WI 54304',
+            location: {
+                lat: 44.5013,
+                lng: -88.0622
             },
             isVisible: ko.observable(true)
         }, {
@@ -126,6 +198,14 @@ var MapWithMarkers = function() {
             location: {
                 lat: 43.6414,
                 lng: -79.3894
+            },
+            isVisible: ko.observable(true)
+        }, {
+            name: 'Bahamas',
+            address: 'Bahamas',
+            location: {
+                lat: 25.025885,
+                lng: -78.035889
             },
             isVisible: ko.observable(true)
         }, {
@@ -169,8 +249,8 @@ var MapWithMarkers = function() {
             },
             isVisible: ko.observable(true)
         }, {
-            name: 'Bahamas',
-            address: 'Bahamas',
+            name: 'Amman',
+            address: 'Amman, Jordan',
             location: {
                 lat: 31.951665,
                 lng: 35.939358

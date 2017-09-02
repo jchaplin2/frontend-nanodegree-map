@@ -31,7 +31,7 @@
                     <img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" data-bind="css : {'rotateControl' : !drawerVisible()}" />
                 </div>
             </nav>
-            <main id="map" data-bind="css : {'map-hide': drawerVisible }" class="map-show" ></main>
+            <main id="map" data-bind="css : {'map-full-screen': !drawerVisible() }" class="map-part-screen" ></main>
         </div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM&libraries=places,geometry,drawing&v=3&callback=initMap" async onerror="loadError()" ></script>
     </body>

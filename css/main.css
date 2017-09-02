@@ -56,7 +56,7 @@ nav.open {
 	border-bottom: 1px solid #798990;
 }
 
-.map-hide {
+.map-part-screen {
 	position: absolute;
 	left: 301px;
 	right: 0;
@@ -67,7 +67,7 @@ nav.open {
 	width: 100%;
 }
 
-.map-show {
+.map-full-screen {
 	left: 0;
 }
 

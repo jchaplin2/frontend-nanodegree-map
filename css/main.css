@@ -8,20 +8,26 @@ body {
 	background-color:#213d48;
 }
 
-.menu {
-	color:white;
+.wrapper {
+	overflow: hidden;
 }
 
-.streetViewContainer {
+.menu {
+	color: white;
+	overflow-y: auto;
+}
+
+.street-view-container {
 	width: 200px;
 	height: 200px;
 }
 
 main  {
-	position:relative;
-	height:100%;
-	width:100%;
-	z-index:1;
+	position: relative;
+	/*height: 100%;*/
+	/*width: 100%;*/
+	z-index: 1;
+	overflow-x: auto; 
 }
 
 button {
@@ -64,29 +70,41 @@ nav.open {
 	bottom: 0;
 	z-index: 1;
 	height: 100%;
-	width: 100%;
+	/*width: 100%;*/
+	width: calc(100% - 300px);
+	overflow: auto !important;
 }
 
 .map-full-screen {
 	left: 0;
+	width: 100%;
 }
 
 .map-control {
 	margin-bottom: 10px;	
 }
 
+#map * {
+	overflow: visible;
+}
+
 .drawer-controls {
 	position: absolute;
 	top: 0;
-	right: 0;
+/*	left: 223px;*/
+	z-index: 100;
+	transform: translate(223px, 0);
+	transition: transform 0.3s ease;
 }
 
 .drawer-controls-hide {
-	right: -50px;
+	transform: translate(0, 0);
 }
+
 .drawer-controls-image {
 	width: 50px;
 	height: 50px;
+	z-index: 100;
 }
 
 .autocomplete-item {

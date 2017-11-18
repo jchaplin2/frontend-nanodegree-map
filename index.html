@@ -9,8 +9,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" onerror="loadError()" > </script>
         <script src="./js/app.js" onerror="loadError()" ></script>
     </head>
-    <body>
+    <body class="wrapper">
         <div>
+            <div id="hide-drawer-control" class="drawer-controls" data-bind="click: toggleDrawerControls, css : {'drawer-controls-hide' : !drawerVisible()}">
+                <img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" data-bind="css : {'rotateControl' : !drawerVisible()}" />
+            </div>
             <nav class="menu open" id="drawer" data-bind="css : {'open': drawerVisible }" >
                 <div id="style-selector-control" name="style-selector-control"  class="map-control">
                     <label for="style-selector">Map Style</label>
@@ -26,9 +29,6 @@
                     <ul id="list-of-places" class="placesList" data-bind="foreach: mapLocations">
                         <li class="autocomplete-item" data-bind="visible : isVisible, click : $parent.hideRemainingEntries"> <span data-bind="text: name"></span> <span data-bind="text: address"></span> </li>
                     </ul>
-                </div>
-                <div id="hide-drawer-control" class="drawer-controls" data-bind="click: toggleDrawerControls, css : {'drawer-controls-hide' : !drawerVisible()}">
-                    <img src="./img/arrow.png" class="drawer-controls-image" id="hide-drawer-control-image" data-bind="css : {'rotateControl' : !drawerVisible()}" />
                 </div>
             </nav>
             <main id="map" data-bind="css : {'map-full-screen': !drawerVisible() }" class="map-part-screen" ></main>

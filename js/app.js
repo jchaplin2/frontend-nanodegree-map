@@ -21,7 +21,7 @@ var MapWithMarkers = function() {
                 lat: 40.7413549,
                 lng: -73.9980244
             },
-            zoom: 13,
+            zoom: 8,
             styles: styles,
             mapTypeControl: false
         });
@@ -304,8 +304,8 @@ var MapWithMarkers = function() {
             var marker = createMarker(self.mapLocations()[i], i);
             self.mapLocations()[i].marker = marker;
             bounds.extend(self.mapLocations()[i].marker.position);
-
         }
+
         map.fitBounds(bounds);
 		google.maps.event.addDomListener(window, 'resize', function() {
 		  map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
@@ -342,8 +342,9 @@ var MapWithMarkers = function() {
         setFlagImageURL(marker, position);
 
         //Opens the infowindow.
+        //TODO: refactor this.
         marker.addListener('click', function() {
-            markerInfoWindow.populateInfoWindow(marker);
+            self.hideRemainingEntries(mapItem);
         });
 
         marker.setMap(map);
@@ -362,7 +363,7 @@ var MapWithMarkers = function() {
         map.fitBounds(bounds);
     };
 
-    this.hideRemainingEntries = function(data, event) {
+    this.hideRemainingEntries = function(data) {
         //data is corresponding data object that was cliked from view
         var lastIndex = self.mapLocations().length - 1;
         for (var i = 0; i <= lastIndex; i++) {
@@ -370,13 +371,33 @@ var MapWithMarkers = function() {
             item.isVisible(false);
             item.marker.setMap(null);
         }
+
+        self.displayAndCenterMapMarker(data);
+    };
+
+    this.displayAndCenterMapMarker = function(data) {
+        self.toggleDrawerControls();
         data.isVisible(true);
         data.marker.setMap(map);
+
         markerInfoWindow.populateInfoWindow(data.marker);
+
+        var centerLng = (data.location.lng + 110);
+        //center pop-up on screen
+
+        var mapCenter = {
+            lat: data.location.lat,
+            lng: centerLng
+        };
+
+        map.setCenter(data.location);
+        map.panTo(data.location);
+        map.setZoom(14);
     };
 
     this.toggleDrawerControls = function() {
         self.drawerVisible(!self.drawerVisible());
+        google.maps.event.trigger(map, "resize");
     };
 
     this.resetEntries = function() {
@@ -388,7 +409,10 @@ var MapWithMarkers = function() {
             item.marker.setMap(map);
             bounds.extend(item.marker.position);
         }
+        markerInfoWindow.resetInfoWindow();
+        map.setZoom(14);
         map.fitBounds(bounds);
+
     };
 
     // This function will loop through the listings and hide them all.
@@ -456,6 +480,11 @@ var MapInfoWindow = function() {
         infoWin.open(map, marker);
     };
 
+    this.resetInfoWindow = function(){
+        infoWin.marker = null;
+        infoWin.close();
+    };
+
     var radius = 50;
     // In case the status is OK, which means the pano was found, compute the
     // position of the streetview image, then calculate the heading, then get a
@@ -466,7 +495,7 @@ var MapInfoWindow = function() {
             var heading = google.maps.geometry.spherical.computeHeading(nearStreetViewLocation, infoWin.marker.position);
 
             var flagImageHTML = infoWin.marker.imageHTML;
-	        infoWin.setContent( flagImageHTML + '<strong>' + infoWin.marker.title + '</strong><div>' + infoWin.marker.address + '</div><div id="pano" class="streetViewContainer"></div>');
+	        infoWin.setContent( flagImageHTML + '<strong>' + infoWin.marker.title + '</strong><div>' + infoWin.marker.address + '</div><div id="pano" class="street-view-container"></div>');
 
             var panoramaOptions = {
                 position: nearStreetViewLocation,

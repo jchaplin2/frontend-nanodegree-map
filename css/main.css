@@ -2,14 +2,18 @@ html,
 body {
 	font-family: Arial, sans-serif;
 	height: 100%;
-	width:100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	background-color:#213d48;
 }
 
-.wrapper {
+body {
 	overflow: hidden;
+}
+
+.wrapper {
+	height: 100%;
 }
 
 .menu {
@@ -24,8 +28,6 @@ body {
 
 main  {
 	position: relative;
-	/*height: 100%;*/
-	/*width: 100%;*/
 	z-index: 1;
 	overflow-x: auto; 
 }
@@ -66,11 +68,10 @@ nav.open {
 	position: absolute;
 	left: 301px;
 	right: 0;
-	height: 100%;
 	bottom: 0;
 	z-index: 1;
 	height: 100%;
-	/*width: 100%;*/
+	min-height: 100%;
 	width: calc(100% - 300px);
 	overflow: auto !important;
 }
@@ -91,7 +92,6 @@ nav.open {
 .drawer-controls {
 	position: absolute;
 	top: 0;
-/*	left: 223px;*/
 	z-index: 100;
 	transform: translate(223px, 0);
 	transition: transform 0.3s ease;

@@ -10,7 +10,7 @@ var MapWithMarkers = function() {
     //searched text.
     self.searchQuery = ko.observable();
     //whether or not the drawer is visible.
-    self.drawerVisible = ko.observable(true);
+    self.drawerVisible = ko.observable(false);
     //map styles
     var styles = [];
 
@@ -309,6 +309,7 @@ var MapWithMarkers = function() {
         map.fitBounds(bounds);
 		google.maps.event.addDomListener(window, 'resize', function() {
 		  map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
+          google.maps.event.trigger(map, "resize");
 		});
     };
 
@@ -342,7 +343,6 @@ var MapWithMarkers = function() {
         setFlagImageURL(marker, position);
 
         //Opens the infowindow.
-        //TODO: refactor this.
         marker.addListener('click', function() {
             self.hideRemainingEntries(mapItem);
         });
@@ -381,14 +381,6 @@ var MapWithMarkers = function() {
         data.marker.setMap(map);
 
         markerInfoWindow.populateInfoWindow(data.marker);
-
-        var centerLng = (data.location.lng + 110);
-        //center pop-up on screen
-
-        var mapCenter = {
-            lat: data.location.lat,
-            lng: centerLng
-        };
 
         map.setCenter(data.location);
         map.panTo(data.location);

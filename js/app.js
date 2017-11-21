@@ -376,7 +376,7 @@ var MapWithMarkers = function() {
     };
 
     this.displayAndCenterMapMarker = function(data) {
-        self.toggleDrawerControls();
+        self.toggleDrawerControls(false);
         data.isVisible(true);
         data.marker.setMap(map);
 
@@ -387,8 +387,8 @@ var MapWithMarkers = function() {
         map.setZoom(14);
     };
 
-    this.toggleDrawerControls = function() {
-        self.drawerVisible(!self.drawerVisible());
+    this.toggleDrawerControls = function(displayFlag) {
+        self.drawerVisible(displayFlag);
         google.maps.event.trigger(map, "resize");
     };
 

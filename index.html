@@ -23,6 +23,15 @@
                         <option value="night">Night Mode</option>
                     </select>
                 </div>
+                <div id="country-selector-control" name="country-selector-control"  class="map-control">
+                    <label for="country-selector">Country</label>
+                    <select id="country-selector" class="selector-control" data-bind="value : countryQuery,valueUpdate : 'change'">
+                        <option value="USA">USA</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                </div>
                 <input id="places-text-search" type="text" placeholder="Enter name of place here." data-bind="value : searchQuery,valueUpdate : 'afterkeydown'" >
                 <button id="reset-places" type="button" data-bind="click : resetEntries"> Reset </button>
                 <div>

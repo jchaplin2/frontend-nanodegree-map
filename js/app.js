@@ -9,6 +9,8 @@ var MapWithMarkers = function() {
     self.mapLocations = ko.observableArray([]);
     //searched text.
     self.searchQuery = ko.observable();
+    //searched country.
+    self.countryQuery = ko.observable("");
     //whether or not the drawer is visible.
     self.drawerVisible = ko.observable(false);
     //map styles
@@ -33,7 +35,10 @@ var MapWithMarkers = function() {
         // Set the map's style to the initial value of the selector.
         var styleSelector = document.getElementById('style-selector');
         map.setOptions({
-            styles: styles[styleSelector.value]
+            styles: styles[styleSelector.value],
+            minZoom: 3,
+            maxZoom: 15,
+            scrollwheel: false
         });
 
         // Apply new JSON when the user selects a different style.
@@ -51,6 +56,7 @@ var MapWithMarkers = function() {
         self.mapLocations = ko.observableArray([{
             name: 'Wrigley Field',
             address: '1060 W Addison St, Chicago, IL 60613',
+            country: 'USA',
             location: {
                 lat: 41.947454,
                 lng: -87.656134
@@ -59,6 +65,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'John Hancock Observatory',
             address: '875 N Michigan Avenue, Chicago, IL 60611',
+            country: 'USA',
             location: {
                 lat: 41.898883,
                 lng: -87.623150
@@ -67,6 +74,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Progressive Field',
             address: '2401 Ontario St, Cleveland, OH 44115',
+            country: 'USA',
             location: {
                 lat: 41.495705,
                 lng: -81.685273
@@ -75,6 +83,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Comerica Park',
             address: '2100 Woodward Ave, Detroit, MI 48201',
+            country: 'USA',
             location: {
                 lat: 42.3389,
                 lng: -83.0485
@@ -83,6 +92,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Dodger Stadium',
             address: '1000 Vin Scully Ave, Los Angeles, CA 90012',
+            country: 'USA',
             location: {
                 lat: 34.073873,
                 lng: -118.240777
@@ -91,6 +101,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Safeco Field',
             address: '1250 1st Ave S, Seattle, WA 98134',
+            country: 'USA',
             location: {
                 lat: 47.5914,
                 lng: -122.3323
@@ -99,6 +110,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Petco Park',
             address: '100 Park Blvd, San Diego, CA 92101',
+            country: 'USA',
             location: {
                 lat: 32.707205,
                 lng: -117.155795
@@ -107,6 +119,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Angel Stadium',
             address: '2000 E Gene Autry Way, Anaheim, CA 92806',
+            country: 'USA',
             location: {
                 lat: 33.800290,
                 lng: -117.882749
@@ -115,6 +128,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Yankee Stadium',
             address: '1 E 161st St, Bronx, NY 10451',
+            country: 'USA',
             location: {
                 lat: 40.8296,
                 lng: -73.9262
@@ -122,7 +136,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Citizen\'s Bank Park',
-            address: '1 Citizens Bank Way, Philadelphia, PA 19148, USA',
+            address: '1 Citizens Bank Way, Philadelphia, PA 19148',
+            country: 'USA',
             location: {
                 lat: 39.906,
                 lng: -75.1666
@@ -131,6 +146,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Nationals Park',
             address: '1500 S Capitol St SE, Washington, DC 20003',
+            country: 'USA',
             location: {
                 lat: 38.8729,
                 lng: -77.0075
@@ -139,6 +155,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Citi Field',
             address: '123-01 Roosevelt Ave, Queens, NY 11368',
+            country: 'USA',
             location: {
                 lat: 40.757,
                 lng: -73.8458
@@ -147,6 +164,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Met Life Stadium',
             address: '1 MetLife Stadium Dr, East Rutherford, NJ 07073',
+            country: 'USA',
             location: {
                 lat: 40.8128,
                 lng: -74.0742
@@ -155,6 +173,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Tropicana Field',
             address: '1 Tropicana Dr, St. Petersburg, FL 33705',
+            country: 'USA',
             location: {
                 lat: 27.768111,
                 lng: -82.653269
@@ -163,6 +182,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Great American Ballpark',
             address: '100 Joe Nuxhall Way, Cincinnati, OH 45202',
+            country: 'USA',
             location: {
                 lat: 39.0979,
                 lng: -84.5082
@@ -171,6 +191,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Miller Park',
             address: '1 Brewers Way, Milwaukee, WI 53214',
+            country: 'USA',
             location: {
                 lat: 43.0282,
                 lng: -87.9713
@@ -179,6 +200,7 @@ var MapWithMarkers = function() {
         },{
             name: 'Lambeau Field',
             address: '1265 Lombardi Ave, Green Bay, WI 54304',
+            country: 'USA',
             location: {
                 lat: 44.5013,
                 lng: -88.0622
@@ -187,6 +209,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Hubert H. Humphrey Metrodome',
             address: '900 S 5th St, Minneapolis, MN 55415',
+            country: 'USA',
             location: {
                 lat: 44.9739,
                 lng: -93.2581
@@ -195,6 +218,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Rogers Centre',
             address: '1 Blue Jays Way, Toronto, ON M5V 1J1, Canada',
+            country: 'Canada',
             location: {
                 lat: 43.6414,
                 lng: -79.3894
@@ -203,6 +227,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Bahamas',
             address: 'Bahamas',
+            country: 'USA',
             location: {
                 lat: 25.025885,
                 lng: -78.035889
@@ -210,7 +235,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'CN Tower',
-            address: '301 Front St W, Toronto, ON M5V 2T6, Canada',
+            address: '301 Front St W, Toronto, ON M5V 2T6',
+            country: 'Canada',
             location: {
                 lat: 43.6426,
                 lng: -79.3871
@@ -218,7 +244,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Petra',
-            address: 'Petra , Jordan',
+            address: 'Petra',
+            country: 'Jordan',
             location: {
                 lat: 30.328454,
                 lng: 35.444362
@@ -226,7 +253,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Mount Nebo',
-            address: 'Mount Nebo, Jordan',
+            address: 'Mount Nebo',
+            country: 'Jordan',
             location: {
                 lat: 31.767658,
                 lng: 35.725615
@@ -234,7 +262,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Wadi Rum',
-            address: 'Wadi Rum, Jordan',
+            address: 'Wadi Rum',
+            country: 'Jordan',
             location: {
                 lat: 29.534667,
                 lng: 35.407909
@@ -242,7 +271,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Dead Sea',
-            address: 'Dead Sea, Jordan',
+            address: 'Dead Sea',
+            country: 'Jordan',
             location: {
                 lat: 31.559029,
                 lng: 35.473189
@@ -250,7 +280,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Amman',
-            address: 'Amman, Jordan',
+            address: 'Amman',
+            country: 'Jordan',
             location: {
                 lat: 31.951665,
                 lng: 35.939358
@@ -259,6 +290,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Key West',
             address: 'Key West, Florida',
+            country: 'USA',
             location: {
                 lat: 24.555059,
                 lng: -81.779987
@@ -266,7 +298,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Blarney Castle',
-            address: 'Blarney Castle, Ireland',
+            address: 'Blarney Castle',
+            country: 'Ireland',
             location: {
                 lat: 51.929092,
                 lng: -8.570885
@@ -274,7 +307,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Kilkenny Castle',
-            address: 'Kilkenny Castle, Ireland',
+            address: 'Kilkenny Castle',
+            country: 'Ireland',
             location: {
                 lat: 52.650462,
                 lng: -7.249298
@@ -282,7 +316,8 @@ var MapWithMarkers = function() {
             isVisible: ko.observable(true)
         }, {
             name: 'Waterford Crystal Factory',
-            address: '28 The Mall, Waterford, Ireland',
+            address: '28 The Mall, Waterford',
+            country: 'Ireland',
             location: {
                 lat: 52.259680,
                 lng: -7.106475
@@ -291,6 +326,7 @@ var MapWithMarkers = function() {
         }, {
             name: 'Dublin',
             address: 'Dublin, Ireland',
+            country: 'Ireland',
             location: {
                 lat: 53.349805,
                 lng: -6.260310
@@ -305,8 +341,8 @@ var MapWithMarkers = function() {
             self.mapLocations()[i].marker = marker;
             bounds.extend(self.mapLocations()[i].marker.position);
         }
+        self.countryQuery("USA");
 
-        map.fitBounds(bounds);
 		google.maps.event.addDomListener(window, 'resize', function() {
 		  map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
           google.maps.event.trigger(map, "resize");
@@ -352,17 +388,6 @@ var MapWithMarkers = function() {
         return marker;
     };
 
-    // This function will loop through the markers array and display them all.
-    this.showPlaces = function() {
-        var bounds = new google.maps.LatLngBounds();
-        // Extend the boundaries of the map for each marker and display the marker
-        for (var i = 0; i < self.mapLocations().length; i++) {
-            self.mapLocations()[i].marker.setMap(map);
-            bounds.extend(self.mapLocations()[i].marker.position);
-        }
-        map.fitBounds(bounds);
-    };
-
     this.hideRemainingEntries = function(data) {
         //data is corresponding data object that was cliked from view
         var lastIndex = self.mapLocations().length - 1;
@@ -375,8 +400,31 @@ var MapWithMarkers = function() {
         self.displayAndCenterMapMarker(data);
     };
 
+    self.countryQuery.subscribe(function() {
+        var places = self.mapLocations;
+        var countryQuery = self.countryQuery();
+        self.searchQuery("");
+        var bounds = new google.maps.LatLngBounds();
+
+        ko.utils.arrayForEach(self.mapLocations(), function(element) {
+            var eltAddress = element.country;
+
+            if (eltAddress.indexOf(countryQuery) === -1) {
+                element.isVisible(false);
+                element.marker.setMap(null);
+            } else {
+                element.isVisible(true);
+                element.marker.setMap(map);
+                bounds.extend(element.marker.position);
+            }
+        });
+
+        map.fitBounds(bounds);
+    });
+
     this.displayAndCenterMapMarker = function(data) {
-        self.toggleDrawerControls(false);
+        self.drawerVisible(false);
+        google.maps.event.trigger(map, "resize");
         data.isVisible(true);
         data.marker.setMap(map);
 
@@ -387,48 +435,52 @@ var MapWithMarkers = function() {
         map.setZoom(14);
     };
 
-    this.toggleDrawerControls = function(displayFlag) {
-        self.drawerVisible(displayFlag);
+    this.toggleDrawerControls = function() {
+        self.drawerVisible(!self.drawerVisible());
         google.maps.event.trigger(map, "resize");
     };
 
     this.resetEntries = function() {
+        self.searchQuery("");
         var lastIndex = self.mapLocations().length - 1;
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i <= lastIndex; i++) {
             var item = self.mapLocations()[i];
-            item.isVisible(true);
-            item.marker.setMap(map);
-            bounds.extend(item.marker.position);
+            var eltAddress = item.country;
+            var countryQuery = self.countryQuery();
+
+            if (eltAddress.indexOf(countryQuery) === -1) {
+                item.isVisible(false);
+                item.marker.setMap(null);
+            } else {
+                item.isVisible(true);
+                item.marker.setMap(map);
+                bounds.extend(item.marker.position);
+            }
         }
-        markerInfoWindow.resetInfoWindow();
         map.setZoom(14);
         map.fitBounds(bounds);
-
-    };
-
-    // This function will loop through the listings and hide them all.
-    this.hidePlaces = function() {
-        for (var i = 0; i < self.mapLocations().length; i++) {
-            self.mapLocations()[i].marker.setMap(null);
-        }
+        markerInfoWindow.resetInfoWindow();
     };
 
     self.searchQuery.subscribe(function() {
         var places = self.mapLocations;
         var searchQuery = self.searchQuery().toLowerCase();
+        var countryQuery = self.countryQuery();
+        //when type in, should filter by current country too.
         var bounds = new google.maps.LatLngBounds();
 
         ko.utils.arrayForEach(self.mapLocations(), function(element) {
             var eltName = element.name.toLowerCase();
+            var countryName = element.country;
 
-            if (eltName.indexOf(searchQuery) === -1) {
-                element.isVisible(false);
-                element.marker.setMap(null);
-            } else {
+            if (eltName.indexOf(searchQuery) > -1 && countryName.indexOf(countryQuery) > -1) {
                 element.isVisible(true);
                 element.marker.setMap(map);
                 bounds.extend(element.marker.position);
+            } else {
+                element.isVisible(false);
+                element.marker.setMap(null);
             }
         });
 

@@ -48,6 +48,11 @@ nav {
 	z-index: 3;
 }
 
+label {
+	width: 72px;
+	display: inline-block;
+}
+
 nav.open {
 	transform: translate(0, 0);
 }

@@ -11,6 +11,15 @@ A map application I built that shows places I've travelled in the world.
 1. type the following at the command line python -m http.server 8000
 1. Open http://localhost:8000 in a web browser.
 
+## How to Use
+* Enter a name of a place to see it selected on the map.
+* Clicking Reset un-selects all markers for that location.
+* Clicking a map marker displays a detailed view with a street view of location.
+* If on a mobile device move the phone around to toggle the pitch on streetview.
+* Toggling country selects a new set of places on the map.
+* There are also three styles available to toggle from: Default, Neon, Night mode
+*
+
 ## Demo
 [Demo](https://jchaplin2.github.io/frontend-nanodegree-map/)
 

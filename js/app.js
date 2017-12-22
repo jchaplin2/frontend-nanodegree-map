@@ -352,11 +352,11 @@ var MapWithMarkers = function() {
     var setFlagImageURL = function(mapLocationObject, location) {
         $.ajax({
             type: 'GET',
-            url: 'https://api.geonames.org/countryCode?lat=' + location.lat + '&lng=' + location.lng + '&username=jchaplin',
+            url: 'http://api.geonames.org/countryCode?lat=' + location.lat + '&lng=' + location.lng + '&username=jchaplin',
             async: true
         }).done(function(result) {
         	if(result)
-                mapLocationObject.imageHTML = "<img src='https://geotree.geonames.org/img/flags18/" + result.trim() + ".png' alt='country flag' />";
+                mapLocationObject.imageHTML = "<img src='http://geotree.geonames.org/img/flags18/" + result.trim() + ".png' alt='country flag' />";
         }).fail(function() {
                 mapLocationObject.imageHTML = "<span> Unable to load flag image. </span>";
         });
@@ -420,9 +420,6 @@ var MapWithMarkers = function() {
         });
 
         map.fitBounds(bounds); // `bounds` is a `LatLngBounds` object
-
-        //map.fitBounds(bounds);
-        //map.setCenter(data.location);
         map.setZoom(8);
     });
 
